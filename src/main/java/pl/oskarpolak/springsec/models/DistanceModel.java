@@ -15,7 +15,7 @@ public class DistanceModel {
     private String[] originAddresses;
 
     @JsonProperty("rows")
-    private Rows[] rows;
+    private List<Rows> rows;
 
     public String[] getDestinationAddresses() {
         return destinationAddresses;
@@ -25,7 +25,37 @@ public class DistanceModel {
         return originAddresses;
     }
 
-    public Rows[] getRows() {
+    public List<Rows> getRows() {
         return rows;
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Rows {
+        @JsonProperty("elements")
+        private List<DistanceElement> elements;
+
+        public List<DistanceElement> getElements() {
+            return elements;
+        }
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class DistanceElement {
+        @JsonProperty("distance")
+        private Distance distance;
+
+        public Distance getDistance() {
+            return distance;
+        }
+    }
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Distance {
+        @JsonProperty("text")
+        private String text;
+
+        public String getText() {
+            return text;
+        }
     }
 }
