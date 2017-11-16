@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.oskarpolak.springsec.models.DistanceElement;
 import pl.oskarpolak.springsec.models.DistanceModel;
+import pl.oskarpolak.springsec.models.Rows;
 import pl.oskarpolak.springsec.models.nothing.User;
 import pl.oskarpolak.springsec.models.services.DistanceService;
 
@@ -27,7 +29,12 @@ public class MainController {
     @ResponseBody
     public String index(){
         DistanceModel model = distanceService.getDistance("Kraków", "Warszawa");
-        return model.getElements().get(0).getDistance().getText();
+        for (Rows rows : model.getRows()) {
+            for (DistanceElement distanceElement : rows.getElements()) {
+                System.out.println(distanceElement.getDistance().getText());
+            }
+        }
+        return "poszło";
     }
 
 
