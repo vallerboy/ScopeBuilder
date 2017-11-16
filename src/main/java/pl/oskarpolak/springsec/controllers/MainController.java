@@ -5,26 +5,29 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.oskarpolak.springsec.models.DistanceModel;
 import pl.oskarpolak.springsec.models.nothing.User;
+import pl.oskarpolak.springsec.models.services.DistanceService;
 
 @Controller
 public class MainController {
 
 
-    User user;
+    private User user;
+    private DistanceService distanceService;
 
-    @Value("${google.distancematrix.key}")
-    String googleKey;
 
     @Autowired
-    public MainController(User user) {
+    public MainController(User user, DistanceService service) {
+        this.distanceService = service;
         this.user = user;
     }
 
     @GetMapping("/")
     @ResponseBody
     public String index(){
-        return googleKey;
+        DistanceModel model = distanceService.getDistance("Kraków", "Warszawa");
+        return model.getElements().get(0).getDistance().getText();
     }
 
 

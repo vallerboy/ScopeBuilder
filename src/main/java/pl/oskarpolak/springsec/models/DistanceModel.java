@@ -39,7 +39,7 @@ public class DistanceModel {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private class Distance {
+    public class Distance {
         @JsonProperty("text")
         private String text;
 
