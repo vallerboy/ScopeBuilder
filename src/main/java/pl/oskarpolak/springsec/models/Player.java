@@ -56,7 +56,7 @@ public class Player {
         this.nickname = nickname;
     }
 
-    static class Builder {
+   public static class Builder {
         private String name;
         private int lvl;
         private int attack;

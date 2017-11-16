@@ -1,10 +1,13 @@
 package pl.oskarpolak.springsec.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import pl.oskarpolak.springsec.models.Player;
 import pl.oskarpolak.springsec.models.User;
 
 @Controller
@@ -12,6 +15,9 @@ public class MainController {
 
 
     User user;
+
+    @Value("${google.distancematrix.key}")
+    String googleKey;
 
     @Autowired
     public MainController(User user) {
@@ -21,7 +27,7 @@ public class MainController {
     @GetMapping("/")
     @ResponseBody
     public String index(){
-        return user.getName();
+        return googleKey;
     }
 
 
