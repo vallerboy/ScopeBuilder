@@ -1,4 +1,4 @@
-package pl.oskarpolak.springsec.models;
+package pl.oskarpolak.springsec.models.nothing;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ConfigurableApplicationContext;

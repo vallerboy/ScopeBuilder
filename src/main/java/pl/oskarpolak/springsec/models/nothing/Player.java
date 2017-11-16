@@ -1,4 +1,4 @@
-package pl.oskarpolak.springsec.models;
+package pl.oskarpolak.springsec.models.nothing;
 
 public class Player {
     private String name;
