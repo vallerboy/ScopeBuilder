@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ExceptionController  {
 
+
+
     @GetMapping("/403")
     @ResponseBody
     public String accessDeined(){

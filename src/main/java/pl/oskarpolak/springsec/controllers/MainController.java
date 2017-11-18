@@ -20,14 +20,13 @@ import java.nio.file.StandardOpenOption;
 public class MainController {
 
 
-    private User user;
     private DistanceService distanceService;
 
 
     @Autowired
-    public MainController(User user, DistanceService service) {
+    public MainController( DistanceService service) {
         this.distanceService = service;
-        this.user = user;
+
     }
 
     @GetMapping("/")
@@ -50,19 +49,7 @@ public class MainController {
     }
 
 
-    @GetMapping("/change")
-    @ResponseBody
-    public String change(){
-        user.setName("Oskar");
-        return "Zmieniłem name usera na Oskar";
-    }
 
-    @GetMapping("/change1")
-    @ResponseBody
-    public String change1(){
-        user.setName("Damian");
-        return "Zmieniłem name usera na Damian";
-    }
 
 
     @GetMapping("/upload")
